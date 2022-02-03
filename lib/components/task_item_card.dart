@@ -1,6 +1,7 @@
 // TODO 13: buat task item card
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:task_management_2/models/task_model.dart';
 
 class TaskItemCard extends StatelessWidget {
@@ -26,24 +27,42 @@ class TaskItemCard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(task.taskName),
+          Text(task.taskName, style: GoogleFonts.poppins()),
           IconButton(
             // TODO 17: Membuat dialog
             onPressed: () {
               showDialog(
                 context: context,
                 builder: (context) => AlertDialog(
-                  content: const Text('Are you sure?'),
+                  content: Text(
+                    'Are you sure?',
+                    style: GoogleFonts.poppins(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                   actions: [
                     TextButton(
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      child: const Text('NO'),
+                      child: Text(
+                        'NO',
+                        style: GoogleFonts.poppins(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
                     ),
                     TextButton(
                       onPressed: onPressed,
-                      child: const Text('YES'),
+                      child: Text(
+                        'YES',
+                        style: GoogleFonts.poppins(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
                     ),
                   ],
                 ),

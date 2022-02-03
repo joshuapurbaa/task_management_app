@@ -1,6 +1,7 @@
 // TODO 8: Membuat task item screen, membuat properti dan constructor
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:task_management_2/models/task_model.dart';
 import 'package:uuid/uuid.dart';
 
@@ -39,7 +40,7 @@ class _TaskItemScreenState extends State<TaskItemScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Create Task'),
+        title: Text('Create Task', style: GoogleFonts.poppins()),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -64,7 +65,13 @@ class _TaskItemScreenState extends State<TaskItemScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Task title'),
+        Text(
+          'Task title',
+          style: GoogleFonts.poppins(
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
         const SizedBox(
           height: 8,
         ),
@@ -93,7 +100,10 @@ class _TaskItemScreenState extends State<TaskItemScreen> {
 
   Widget buildButton() {
     return ElevatedButton(
-      child: const Text('Create Task'),
+      child: Text(
+        'Create Task',
+        style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
+      ),
       onPressed: () {
         // TODO 14: add callback handler
         // TODO 15: add package uuid

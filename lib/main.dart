@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task_management_2/models/task_manager.dart';
+import 'package:task_management_2/screens/login_screen.dart';
 import 'screens/task_screen.dart';
 
 void main() {
@@ -21,10 +22,13 @@ class MyApp extends StatelessWidget {
           create: (context) => TaskManager(),
         ),
       ],
-      child: const MaterialApp(
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Task Management',
-        home: TaskScreen(),
+        routes: {
+          '/': (context) => const LoginScreen(),
+          '/taskScreen': (context) => const TaskScreen(),
+        },
       ),
     );
   }

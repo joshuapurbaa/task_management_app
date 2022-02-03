@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:task_management_2/components/profile_sheet.dart';
 import 'package:task_management_2/models/task_manager.dart';
@@ -15,7 +16,10 @@ class TaskScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Task Management'),
+        title: Text(
+          'Task Management',
+          style: GoogleFonts.poppins(),
+        ),
         centerTitle: true,
         // TODO 18: buat bottom sheet
         actions: [
