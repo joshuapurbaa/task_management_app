@@ -1,4 +1,4 @@
-// TODO 25: add login_screen and add shared_preference package
+// TODO 25: Menambahkan login screen, shared_preference package dan email_validator_package
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -13,7 +13,6 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final formKey = GlobalKey<FormState>();
-  // TODO1:
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();

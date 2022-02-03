@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Task Management',
+        // TODO 26: Mengganti home menjadi routes
         routes: {
           '/': (context) => const LoginScreen(),
           '/taskScreen': (context) => const TaskScreen(),
