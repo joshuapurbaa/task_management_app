@@ -2,14 +2,18 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:task_management_2/models/db_manager.dart';
 import 'package:task_management_2/models/task_model.dart';
 import 'package:uuid/uuid.dart';
+import 'package:provider/provider.dart';
 
 class TaskItemScreen extends StatefulWidget {
-  final Function(TaskModel) onCreate;
+  // final Function(TaskModel) onCreate;
+  final TaskModel? taskModel;
   const TaskItemScreen({
     Key? key,
-    required this.onCreate,
+    // required this.onCreate,
+    this.taskModel,
   }) : super(key: key);
 
   @override
@@ -19,15 +23,16 @@ class TaskItemScreen extends StatefulWidget {
 class _TaskItemScreenState extends State<TaskItemScreen> {
   // TODO 10: add state properti
   final _taskNameController = TextEditingController();
-  String _taskName = '';
+  // String _taskName = '';
+  // TODO :
+  bool _isUpdate = false;
   @override
   void initState() {
     super.initState();
-    _taskNameController.addListener(() {
-      setState(() {
-        _taskName = _taskNameController.text;
-      });
-    });
+    if (widget.taskModel != null) {
+      _taskNameController.text = widget.taskModel!.taskName;
+      _isUpdate = true;
+    }
   }
 
   @override
@@ -107,11 +112,23 @@ class _TaskItemScreenState extends State<TaskItemScreen> {
       onPressed: () {
         // TODO 14: add callback handler
         // TODO 15: add package uuid
-        final taskItem = TaskModel(
-          id: const Uuid().v1(),
-          taskName: _taskNameController.text,
-        );
-        widget.onCreate(taskItem);
+        // final taskItem = TaskModel(
+        //   id: const Uuid().v1(),
+        //   taskName: _taskNameController.text,
+        // );
+        // widget.onCreate(taskItem);
+        // TODO :
+        if (!_isUpdate) {
+          final task = TaskModel(taskName: _taskNameController.text);
+          Provider.of<DbManager>(context, listen: false).addTask(task);
+        } else {
+          final task = TaskModel(
+            id: widget.taskModel!.id,
+            taskName: _taskNameController.text,
+          );
+          Provider.of<DbManager>(context, listen: false).updateTask(task);
+        }
+        Navigator.pop(context);
       },
     );
   }

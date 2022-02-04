@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:task_management_2/components/profile_sheet.dart';
+import 'package:task_management_2/models/db_manager.dart';
 import 'package:task_management_2/models/task_manager.dart';
 import 'package:task_management_2/screens/task_list_screen.dart';
 
@@ -44,16 +45,23 @@ class TaskScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
-          final manager = Provider.of<TaskManager>(context, listen: false);
+          // final manager = Provider.of<TaskManager>(context, listen: false);
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(
+          //     builder: (context) => TaskItemScreen(
+          //       onCreate: (task) {s
+          //         manager.addTask(task);
+          //         Navigator.pop(context);
+          //       },
+          //     ),
+          //   ),
+          // );
+          // TODO :
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => TaskItemScreen(
-                onCreate: (task) {
-                  manager.addTask(task);
-                  Navigator.pop(context);
-                },
-              ),
+              builder: (context) => const TaskItemScreen(),
             ),
           );
         },
@@ -64,7 +72,8 @@ class TaskScreen extends StatelessWidget {
   }
 
   Widget buildTaskScreen() {
-    return Consumer<TaskManager>(
+    // TODO :
+    return Consumer<DbManager>(
       builder: (context, manager, child) {
         if (manager.taskModels.isNotEmpty) {
           return TaskListScreen(
@@ -75,5 +84,16 @@ class TaskScreen extends StatelessWidget {
         }
       },
     );
+    // return Consumer<TaskManager>(
+    //   builder: (context, manager, child) {
+    //     if (manager.taskModels.isNotEmpty) {
+    //       return TaskListScreen(
+    //         manager: manager,
+    //       );
+    //     } else {
+    //       return const EmptyTaskScreen();
+    //     }
+    //   },
+    // );
   }
 }

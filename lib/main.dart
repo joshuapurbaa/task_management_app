@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:task_management_2/models/db_manager.dart';
 import 'package:task_management_2/models/task_manager.dart';
 import 'package:task_management_2/screens/login_screen.dart';
 import 'screens/task_screen.dart';
@@ -20,6 +21,10 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (context) => TaskManager(),
+        ),
+        // TODO :
+        ChangeNotifierProvider(
+          create: (context) => DbManager(),
         ),
       ],
       child: MaterialApp(

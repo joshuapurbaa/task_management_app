@@ -1,12 +1,23 @@
 // TODO 1: Membuat Model
+// TODO: ubah dari final ke late
 class TaskModel {
-  final String id;
-  final String taskName;
-  final bool isComplete;
+  late int? id;
+  late String taskName;
 
   TaskModel({
-    required this.id,
+    this.id,
     required this.taskName,
-    this.isComplete = false,
   });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'taskName': taskName,
+    };
+  }
+
+  TaskModel.fromMap(Map<String, dynamic> map) {
+    id = map['id'];
+    taskName = map['taskName'];
+  }
 }
